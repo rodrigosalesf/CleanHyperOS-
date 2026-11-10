@@ -1,15 +1,43 @@
 # 🚀 CleanHyperOS
 
-> **Otimizador, Debloater e Hardening de Privacidade Inteligente para Smartphones Xiaomi, Redmi e POCO rodando MIUI 13/14 e HyperOS 1.0, 2.0 e 3.0.**
+> **Otimizador, Debloater e Proteção de Privacidade em 1 Clique para celulares Xiaomi, Redmi e POCO (HyperOS & MIUI).**
+> Deixe seu celular mais rápido, sem anúncios do sistema, livre de aplicativos inúteis de fábrica (bloatware) e com muito mais bateria — sem precisar de root!
+
+[![Download ZIP](https://img.shields.io/badge/Download-Baixar%20Vers%C3%A3o%20Pronta%20(ZIP)-success?style=for-the-badge&logo=windows)](https://github.com/rodrigosalesf/CleanHyperOS-/archive/refs/heads/main.zip)
+[![Releases](https://img.shields.io/badge/Releases-Vers%C3%A3o%201.0.0-blue?style=for-the-badge&logo=github)](https://github.com/rodrigosalesf/CleanHyperOS-/releases)
 
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20HyperOS%20%7C%20MIUI-orange.svg)](https://www.mi.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![ADB Safe](https://img.shields.io/badge/Root-NOT%20Required-success.svg)](#-seguran%C3%A7a)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg)](https://www.python.org/)
+[![ADB Safe](https://img.shields.io/badge/Root-NÃO%20Necessário-success.svg)](#-seguran%C3%A7a)
+[![Python](https://img.shields.io/badge/Python-Auto--Instalado-brightgreen.svg)](https://www.python.org/)
 
 ---
 
-## 📖 Visão Geral
+## 🎯 Guia Rápido para o Usuário Comum (3 Passos)
+
+Não entende de programação? Não se preocupe! O **CleanHyperOS** foi feito para você só dar dois cliques e esperar a mágica acontecer:
+
+### 📥 1. Baixar o Projeto
+* Clique no botão verde acima ou [**Clique Aqui para Baixar o ZIP**](https://github.com/rodrigosalesf/CleanHyperOS-/archive/refs/heads/main.zip).
+* Extraia a pasta baixada em qualquer lugar do seu computador (por exemplo, na Área de Trabalho ou Downloads).
+
+### 🔌 2. Conectar o Celular no PC
+1. No seu Xiaomi, abra **Configurações** > **Sobre o telefone**.
+2. Toque 7 vezes seguidas em **Versão do HyperOS** (ou Versão da MIUI) até aparecer: *"Você agora é um desenvolvedor!"*.
+3. Volte para a tela inicial das Configurações, vá em **Configurações adicionais** > **Opções do desenvolvedor**.
+4. Ative a opção **Depuração USB**.
+5. Conecte o cabo USB do celular no computador. Quando aparecer uma mensagem na tela do aparelho, marque a caixinha **"Sempre permitir a partir deste computador"** e confirme.
+
+### ⚡ 3. Rodar a Otimização
+* Entre na pasta que você extraiu e dê **duplo clique no arquivo `run.bat`**.
+* **Pronto!** O inicializador cuida de tudo:
+  - Se seu PC não tiver o Python ou o ADB instalados, ele baixa e instala tudo de forma transparente.
+  - Na tela, você escolhe se quer o **Modo Rápido [1]** (faz tudo sozinho em segundos) ou o **Modo Guiado [2]** (pergunta o que você quer manter).
+  - Um backup de segurança é criado antes de qualquer ação. Se um dia quiser reverter, basta rodar o restaurador gerado!
+
+---
+
+## 📖 O que é o CleanHyperOS?
 
 O **CleanHyperOS** é uma ferramenta completa e automatizada via **ADB (Android Debug Bridge)** desenvolvida para transformar a experiência em dispositivos Xiaomi:
 - Elimina anúncios do sistema, rastreadores e serviços ocultos de telemetria.
