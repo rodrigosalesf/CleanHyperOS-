@@ -84,8 +84,8 @@ adb version
 ```
 If ADB is **NOT** installed:
 - **Windows:**
-  - Automated: Run `run.bat` (downloads official Google `platform-tools` zip into the project folder).
-  - Or via winget: `winget install Google.PlatformTools`
+  - Via winget: `winget install Google.PlatformTools --version 37.0.1`
+  - Automated: Run `run.bat` (checks and installs via winget automatically)
 - **Linux:** `sudo apt install -y adb`
 - **macOS:** `brew install android-platform-tools`
 

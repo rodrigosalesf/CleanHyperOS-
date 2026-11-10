@@ -48,19 +48,21 @@ if not defined PY_CMD (
 :: 2. Verificar se ADB esta instalado
 where adb >nul 2>&1
 if !ERRORLEVEL! neq 0 (
-    if exist "%~dp0platform-tools\adb.exe" (
-        set "PATH=%~dp0platform-tools;!PATH!"
-    ) else if exist "%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe" (
+    if exist "%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe" (
         set "PATH=%LOCALAPPDATA%\Android\Sdk\platform-tools;!PATH!"
     ) else (
         echo [!] ADB (Android Debug Bridge) nao foi encontrado no sistema.
-        echo [*] Baixando ferramentas oficiais do Google (platform-tools)...
-        powershell -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://dl.google.com/android/repository/platform-tools-latest-windows.zip' -OutFile '%TEMP%\platform-tools.zip'; Expand-Archive -Path '%TEMP%\platform-tools.zip' -DestinationPath '%~dp0' -Force; Remove-Item '%TEMP%\platform-tools.zip'"
-        if exist "%~dp0platform-tools\adb.exe" (
-            set "PATH=%~dp0platform-tools;!PATH!"
-            echo [OK] ADB instalado com sucesso em platform-tools\
+        echo [*] Instalando Google Platform Tools via winget...
+        where winget >nul 2>&1
+        if !ERRORLEVEL! equ 0 (
+            winget install Google.PlatformTools --version 37.0.1 -e --silent --accept-source-agreements --accept-package-agreements
+            :: Tentar localizar adb instalado pelo winget se ainda nao estiver no PATH atual
+            for /d %%P in ("%LOCALAPPDATA%\Microsoft\WinGet\Packages\Google.PlatformTools*") do (
+                if exist "%%P\platform-tools\adb.exe" set "PATH=%%P\platform-tools;!PATH!"
+                if exist "%%P\adb.exe" set "PATH=%%P;!PATH!"
+            )
         ) else (
-            echo [AVISO] Nao foi possivel baixar o ADB automaticamente.
+            echo [AVISO] O gerenciador winget nao foi encontrado para instalar o ADB automaticamente.
         )
     )
 )

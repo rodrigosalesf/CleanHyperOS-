@@ -62,7 +62,7 @@ Antes de rodar a ferramenta em qualquer aparelho, fique atento:
    - *Windows (Manual via terminal, se desejar):*
      ```powershell
      winget install Python.Python.3.12
-     winget install Google.PlatformTools
+     winget install Google.PlatformTools --version 37.0.1
      ```
    - *Linux (Ubuntu/Debian):*
      ```bash
