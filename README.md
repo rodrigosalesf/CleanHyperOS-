@@ -52,25 +52,43 @@ Antes de rodar a ferramenta em qualquer aparelho, fique atento:
 
 ---
 
-## 🛠️ Pré-requisitos
+## 🛠️ Pré-requisitos & Instalação Automática
 
-1. **Computador:** Windows, Linux ou macOS com [Python 3.8+](https://www.python.org/downloads/) instalado.
+> [!TIP]
+> **Zero Dificuldade no Windows:** Você não precisa se preocupar em instalar nada manualmente. O inicializador `run.bat` detecta automaticamente se o **Python** ou o **ADB** estão faltando e realiza o download e a instalação silenciosa para você!
+
+### Requisitos Gerais:
+1. **Computador:** Windows 10/11, Linux ou macOS.
+   - *Windows (Manual via terminal, se desejar):*
+     ```powershell
+     winget install Python.Python.3.12
+     winget install Google.PlatformTools
+     ```
+   - *Linux (Ubuntu/Debian):*
+     ```bash
+     sudo apt update && sudo apt install -y python3 adb
+     ```
+   - *macOS:*
+     ```bash
+     brew install python3 android-platform-tools
+     ```
 2. **Cabo USB** para conectar o smartphone ao PC.
 3. **Depuração USB ativada no celular:**
    * Vá em **Configurações** > **Sobre o telefone** e toque repetidamente em **Versão do HyperOS / MIUI** até virar um desenvolvedor.
    * Volte, vá em **Configurações Adicionais** > **Opções do desenvolvedor**.
-   * Ative a opção **Depuração USB**.
+   * Ative a opção **Depuração USB** (e se disponível, *Depuração USB (Configurações de Segurança)*).
    * Conecte o cabo ao PC e, na tela do celular, marque **"Sempre permitir a partir deste computador"** e confirme.
 
 ---
 
 ## 🚀 Como Executar
 
-### No Windows (Atalho Rápido):
+### No Windows (1 Clique - 100% Automático):
 Basta dar **duplo clique** no arquivo:
 ```cmd
 run.bat
 ```
+*(Ele verifica o ambiente, instala as dependências necessárias se faltarem e abre a tela de escolha de modo).*
 
 ### Via Terminal (Windows / Linux / macOS):
 Abra o terminal na pasta do projeto e execute:

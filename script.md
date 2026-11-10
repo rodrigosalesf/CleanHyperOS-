@@ -53,6 +53,44 @@ Antes de iniciar qualquer modificação, apresente as seguintes ressalvas essenc
 
 ---
 
+## PHASE 0: Host Environment Verification & Auto-Installation (Python & ADB)
+
+Before touching the Android device, the AI assistant must verify if the host machine has the necessary prerequisites (Python 3 and ADB). Select the best strategy according to the host OS:
+
+### 1. Python 3 Verification:
+Check if Python is available:
+```bash
+python --version || python3 --version
+```
+If Python is **NOT** installed:
+- **Windows (10 / 11) - Recommended:** Run silent installation via Windows Package Manager:
+  ```powershell
+  winget install --id Python.Python.3.12 -e --silent --accept-source-agreements --accept-package-agreements
+  ```
+- **Linux (Ubuntu/Debian):**
+  ```bash
+  sudo apt update && sudo apt install -y python3
+  ```
+- **macOS:**
+  ```bash
+  brew install python3
+  ```
+- **Windows 1-Click Alternative:** The provided `run.bat` already checks, downloads, and installs Python automatically without any manual intervention.
+
+### 2. ADB (Android Debug Bridge) Verification:
+Check if ADB is available:
+```bash
+adb version
+```
+If ADB is **NOT** installed:
+- **Windows:**
+  - Automated: Run `run.bat` (downloads official Google `platform-tools` zip into the project folder).
+  - Or via winget: `winget install Google.PlatformTools`
+- **Linux:** `sudo apt install -y adb`
+- **macOS:** `brew install android-platform-tools`
+
+---
+
 ## PHASE 1: Device Discovery & Pre-flight Diagnostics
 
 Run the following commands in sequence to verify connection and inspect the device environment:
