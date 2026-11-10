@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Device-specific backups & dumps
+backup_hyperos/
+*.txt
+*.log
+
+# Environments & IDEs
+.env
+.venv
+env/
+venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

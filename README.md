@@ -1,0 +1,125 @@
+# 🚀 CleanHyperOS
+
+> **Otimizador, Debloater e Hardening de Privacidade Inteligente para Smartphones Xiaomi, Redmi e POCO rodando MIUI 13/14 e HyperOS 1.0, 2.0 e 3.0.**
+
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20HyperOS%20%7C%20MIUI-orange.svg)](https://www.mi.com)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![ADB Safe](https://img.shields.io/badge/Root-NOT%20Required-success.svg)](#-seguran%C3%A7a)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg)](https://www.python.org/)
+
+---
+
+## 📖 Visão Geral
+
+O **CleanHyperOS** é uma ferramenta completa e automatizada via **ADB (Android Debug Bridge)** desenvolvida para transformar a experiência em dispositivos Xiaomi:
+- Elimina anúncios do sistema, rastreadores e serviços ocultos de telemetria.
+- Remove mais de 80 aplicativos redundantes e bloatwares (Xiaomi e Google).
+- Isola o consumo em segundo plano de redes sociais (TikTok, X, Instagram, Facebook) e apps de corrida (Uber, 99, inDriver).
+- Configura bloqueio de anúncios a nível de rede (AdGuard Private DNS).
+- Aumenta a autonomia de bateria, reduz uso de memória RAM e preserva a vida útil da memória flash interna.
+- **100% Reversível:** Gera scripts automáticos de restauração antes de qualquer alteração.
+
+---
+
+## ✨ Recursos Principais
+
+* 🛡️ **Zero Root & Zero Risco de Bootloop:** Opera estritamente no espaço de usuário do Android (`pm disable-user` e `pm uninstall -k --user 0`). Componentes vitais do sistema (Security Center, PowerKeeper, Câmera nativa de alta resolução, Play Store) são rigidamente blindados.
+* ⚡ **Dois Modos de Execução:**
+  1. **Modo Rápido (Sem Intervenção):** Aplica o perfil completo recomendado em uma única passagem.
+  2. **Modo Guiado (Com Intervenção):** Interface interativa que pergunta categoria por categoria o que você deseja manter (Temas, Relógio, Android Auto, etc.).
+* 🔒 **Supressão Total de Telemetria:**
+  * **Xiaomi:** Desativa serviços silenciosos de ativação de chip por SMS (`simactivate`), `misightservice`, `audiomonitor`, telemetria de operadora e diagnósticos.
+  * **Google:** Desativa o Privacy Sandbox do Android (Topics API, AdServices, Cobalt logging), upload silencioso de APKs pelo Play Protect e o Bem-Estar Digital.
+  * **Meta & Redes Sociais:** Desativa os serviços de instalação silenciosa do Facebook e isola processos de fundo do TikTok, X/Twitter, Instagram, Threads e Spotify.
+* 🚗 **GPS Inteligente para Apps de Corrida:** Uber, 99 e inDriver têm sua localização travada para funcionar **apenas enquanto o aplicativo está em primeiro plano** (permitindo pedir corridas normalmente, mas cortando qualquer rastreamento quando fechados).
+* 🌐 **Bloqueio de Anúncios Nativo:** Ativa o DNS Privado com DNS-over-TLS (`dns.adguard-dns.com`), bloqueando anúncios em navegadores e apps sem precisar de aplicativos VPN adicionais.
+* 💨 **Fluidez e Longevidade:** Reduz as escalas de animação para `0.5x` e diminui o buffer do Logcat para `64K`, poupando ciclos de escrita na memória Flash (UFS).
+
+---
+
+## ⚠️ Ressalvas Importantes Antes de Usar
+
+Antes de rodar a ferramenta em qualquer aparelho, fique atento:
+
+1. ⏰ **Relógio & Despertador:**
+   O script remove o relógio da Xiaomi por padrão. Certifique-se de ter o **Google Relógio** (ou outro app de despertador) instalado no aparelho.
+2. 🚗 **Android Auto:**
+   Se você conecta o celular na central multimídia do seu carro, escolha o **Modo Guiado** e opte por **MANTER** o Android Auto.
+3. 🎨 **App de Temas Xiaomi:**
+   Se você gosta de baixar papéis de parede, fontes e temas personalizados pela loja da Xiaomi, opte por manter o aplicativo de Temas.
+4. 📱 **ROMs Importadas da China (China ROM):**
+   Aparelhos com ROM chinesa pura usam o app de SMS da Xiaomi. Em aparelhos com ROM Global ou Europeia (vendidos no Brasil e internacionalmente), o padrão já é o Google Mensagens (100% seguro).
+
+---
+
+## 🛠️ Pré-requisitos
+
+1. **Computador:** Windows, Linux ou macOS com [Python 3.8+](https://www.python.org/downloads/) instalado.
+2. **Cabo USB** para conectar o smartphone ao PC.
+3. **Depuração USB ativada no celular:**
+   * Vá em **Configurações** > **Sobre o telefone** e toque repetidamente em **Versão do HyperOS / MIUI** até virar um desenvolvedor.
+   * Volte, vá em **Configurações Adicionais** > **Opções do desenvolvedor**.
+   * Ative a opção **Depuração USB**.
+   * Conecte o cabo ao PC e, na tela do celular, marque **"Sempre permitir a partir deste computador"** e confirme.
+
+---
+
+## 🚀 Como Executar
+
+### No Windows (Atalho Rápido):
+Basta dar **duplo clique** no arquivo:
+```cmd
+run.bat
+```
+
+### Via Terminal (Windows / Linux / macOS):
+Abra o terminal na pasta do projeto e execute:
+```bash
+python run_clean_hyperos.py
+```
+
+*Para rodar direto no modo rápido sem perguntas via linha de comando:*
+```bash
+python run_clean_hyperos.py --auto
+```
+
+---
+
+## 🔄 Como Reverter (Rollback / Restauração)
+
+Sempre que a ferramenta é executada, ela cria automaticamente uma pasta `backup_hyperos` com a lista dos seus pacotes originais e scripts de restauração instantânea.
+
+Para desfazer as alterações e restaurar os aplicativos originais:
+* **No Windows:** Dê duplo clique em `backup_hyperos\restore.bat`.
+* **No Linux / macOS:** Execute no terminal `./backup_hyperos/restore.sh`.
+
+---
+
+## 📂 Estrutura do Repositório
+
+```text
+CleanHyperOS/
+├── run_clean_hyperos.py   # Script principal com interface interativa e automação
+├── run.bat                # Launcher de 1 clique para Windows
+├── script.md              # Manual técnico completo e prompt de referência
+├── README.md              # Documentação oficial
+├── LICENSE                # Licença MIT
+└── .gitignore             # Arquivos ignorados pelo Git
+```
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são muito bem-vindas! Se você encontrou novos pacotes de telemetria ou melhorias para o HyperOS:
+1. Faça um Fork do projeto.
+2. Crie uma branch para sua modificação (`git checkout -b feature/novo-recurso`).
+3. Faça commit das suas alterações (`git commit -m 'Adiciona novo recurso'`).
+4. Envie para o branch (`git push origin feature/novo-recurso`).
+5. Abra um Pull Request.
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
